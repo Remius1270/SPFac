@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('event', 'EventsController');
+Route::resource('event', 'EventsController',['only' => ['index', 'store', 'update', 'destroy']]);
 
 Auth::routes();
 

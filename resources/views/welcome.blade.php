@@ -99,8 +99,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a id="delete" data-href="{{ url('event') }}" data-id="" class="btn btn-danger">ELIMINAR</a>
-                    <button type="button" class="btn btn-dafault" data-dismiss="modal">CANCELAR</button>
+                    <a id="delete" data-href="{{ url('event') }}" data-id="" class="btn btn-danger">SUPPRIMER</a>
+                    <button type="button" class="btn btn-dafault" data-dismiss="modal">ANNULER</button>
                     {!! Form::submit('ACTUALIZAR', ['class' => 'btn btn-success']) !!}
                 </div>
             </div>
@@ -117,7 +117,7 @@
 {!! Html::script('vendor/antoine/bootstrap-colorpicker/js/bootstrap-colorpicker.js') !!}
 <script>
     var BASEURL = "{{ url('/') }}";
-    $(document).ready(function() {
+    $(document).ready(function () {
 
         $('#calendar').fullCalendar({
             header: {
@@ -130,7 +130,7 @@
             selectable: true,
             selectHelper: true,
 
-            select: function(start){
+            select: function (start) {
                 start = moment(start.format());
                 $('#date_start').val(start.format('DD-MM-YYYY'));
                 $('#responsive-modal').modal('show');
@@ -138,7 +138,7 @@
 
             event: BASEURL + '/event',
 
-            eventClick: function(event, jsEvent, view){
+            eventClick: function (event, jsEvent, view) {
                 var date_start = $.fullCalendar.moment(event.start).format('DD-MM-YYYY');
                 var time_start = $.fullCalendar.moment(event.start).format('hh:mm:ss');
                 var date_end = $.fullCalendar.moment(event.end).format('DD-MM-YYYY hh:mm:ss');
@@ -168,18 +168,18 @@
         format: 'DD-MM-YYYY HH:mm:ss'
     });
 
-    $('#delete').on('click', function(){
+    $('#delete').on('click', function () {
         var x = $(this);
-        var delete_url = x.attr('data-href')+'/'+x.attr('data-id');
+        var delete_url = x.attr('data-href') + '/' + x.attr('data-id');
 
         $.ajax({
             url: delete_url,
             type: 'PATCH',
-            success: function(result){
+            success: function (result) {
                 $('#modal-event').modal('hide');
                 alert(result.message);
             },
-            error: function(result){
+            error: function (result) {
                 $('#modal-event').modal('hide');
                 alert(result.message);
             }
