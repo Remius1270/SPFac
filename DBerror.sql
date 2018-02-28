@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 -- Structure de la table `event`
 --
 
-DROP TABLE IF EXISTS `events`;
-CREATE TABLE IF NOT EXISTS `events` (
+DROP TABLE IF EXISTS `event`;
+CREATE TABLE IF NOT EXISTS `event` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_bin NOT NULL,
   `start` datetime NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `events` (
 -- Déchargement des données de la table `event`
 --
 
-INSERT INTO `events` (`id`, `title`, `start`, `end`, `color`, `updated_at`, `created_at`) VALUES
+INSERT INTO `event` (`id`, `title`, `start`, `end`, `color`, `updated_at`, `created_at`) VALUES
 (1, 'Aut fugit suscipit mollitia.', '2018-02-24 06:27:47', '2018-02-21 07:06:20', '#d2732f', '2018-02-28 19:42:30', '2018-02-28 19:42:30'),
 (2, 'Architecto cum debitis.', '2018-02-21 07:24:27', '2018-02-01 11:25:37', '#2a4df2', '2018-02-28 19:42:30', '2018-02-28 19:42:30'),
 (3, 'Voluptatem porro sunt sapiente.', '2018-02-23 07:42:20', '2018-02-11 00:33:25', '#d2dd36', '2018-02-28 19:42:30', '2018-02-28 19:42:30'),
