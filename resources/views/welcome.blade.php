@@ -165,7 +165,7 @@
     $('#date_end').bootstrapMaterialDatePicker({
         date: true,
         shortTime: false,
-        format: 'YYYY-MM-DD HH:mm:ss'
+        format: 'DD-MM-YYYY HH:mm:ss'
     });
 
     $('#delete').on('click', function(){
