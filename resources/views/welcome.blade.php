@@ -23,7 +23,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        {{ Form::label('title', 'TITRE DE L\'EVENT) }}
+                        {{ Form::label('title', 'TITRE') }}
                         {{ Form::text('title', old('title'), ['class' => 'form-control']) }}
                     </div>
 
