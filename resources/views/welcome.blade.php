@@ -137,7 +137,7 @@
                 $('#responsive-modal').modal('show');
             },
 
-            event: BASEURL + '/event',
+            events: BASEURL + '/event',
 
             eventClick: function (event, jsEvent, view) {
                 var date_start = $.fullCalendar.moment(event.start).format('YYYY-MM-DD');
