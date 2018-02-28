@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::ressource('events', 'EventsController');
+Route::resource('events', 'EventsController');
 
 Auth::routes();
 
