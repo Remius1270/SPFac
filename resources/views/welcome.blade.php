@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>fullCalendar QUI MARCHE PAS CA MERE</title>
-    {!! Html::style('vendor/antoine/bootstrap/css/bootstrap.css') !!}
-    {!! Html::style('vendor/antoine/fullcalendar/fullcalendar.css') !!}
-    {!! Html::style('vendor/antoine/bootstrap-datetimepicker/css/bootstrap-material-datetimepicker.css') !!}
-    {!! Html::style('vendor/antoine/bootstrap-colorpicker/css/bootstrap-colorpicker.css') !!}
+    <link href='vendor/antoine/bootstrap/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='vendor/antoine/fullcalendar/fullcalendar.min.css' rel='stylesheet'>
+    <link href='vendor/antoine/bootstrap-datetimepicker/css/bootstrap-material-datetimepicker.css' rel='stylesheet'>
+    <link href='vendor/antoine/bootstrap-colorpicker/css/bootstrap-colorpicker.css' rel='stylesheet'>
+    <link href='vendor/antoine/fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
 </head>
 <body>
 <div class="container">
@@ -109,12 +110,12 @@
 
 </div>
 </body>
-{!! Html::script('vendor/antoine/jquery.js') !!}
-{!! Html::script('vendor/antoine/bootstrap/js/bootstrap.js') !!}
-{!! Html::script('vendor/antoine/fullcalendar/lib/moment.js') !!}
-{!! Html::script('vendor/antoine/fullcalendar/fullcalendar.js') !!}
-{!! Html::script('vendor/antoine/bootstrap-datetimepicker/js/bootstrap-material-datetimepicker.js') !!}
-{!! Html::script('vendor/antoine/bootstrap-colorpicker/js/bootstrap-colorpicker.js') !!}
+<script src='vendor/antoine/fullcalendar/lib/jquery.min.js'></script>
+<script src='vendor/antoine/bootstrap/js/bootstrap.js'></script>
+<script src='vendor/antoine/fullcalendar/lib/moment.min.js'></script>
+<script src='vendor/antoine/fullcalendar/fullcalendar.min.js'></script>
+<script src='vendor/antoine/bootstrap-datetimepicker/js/bootstrap-material-datetimepicker.js'></script>
+<script src='vendor/antoine/bootstrap-colorpicker/js/bootstrap-colorpicker.js'></script>
 <script>
     var BASEURL = "{{ url('/') }}";
     $(document).ready(function () {
