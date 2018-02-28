@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>fullCalendar and Laravel</title>
+    <title>fullCalendar QUI MARCHE PAS CA MERE</title>
     {!! Html::style('vendor/antoine/bootstrap/css/bootstrap.css') !!}
     {!! Html::style('vendor/antoine/fullcalendar/fullcalendar.css') !!}
     {!! Html::style('vendor/antoine/bootstrap-datetimepicker/css/bootstrap-material-datetimepicker.css') !!}
@@ -18,7 +18,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4>REGISTRO DE NUEVO EVENTO</h4>
+                    <h4>Evénements</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dafault" data-dismiss="modal">CANCELAR</button>
+                    <button type="button" class="btn btn-dafault" data-dismiss="modal">ANNULER</button>
                     {!! Form::submit('GUARDAR', ['class' => 'btn btn-success']) !!}
                 </div>
             </div>
@@ -65,7 +65,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4>DETALLES DE EVENTO</h4>
+                    <h4>DETAILS</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
@@ -132,16 +132,16 @@
 
             select: function(start){
                 start = moment(start.format());
-                $('#date_start').val(start.format('YYYY-MM-DD'));
+                $('#date_start').val(start.format('DD-MM-YYYY'));
                 $('#responsive-modal').modal('show');
             },
 
             event: BASEURL + '/event',
 
             eventClick: function(event, jsEvent, view){
-                var date_start = $.fullCalendar.moment(event.start).format('YYYY-MM-DD');
+                var date_start = $.fullCalendar.moment(event.start).format('DD-MM-YYYY');
                 var time_start = $.fullCalendar.moment(event.start).format('hh:mm:ss');
-                var date_end = $.fullCalendar.moment(event.end).format('YYYY-MM-DD hh:mm:ss');
+                var date_end = $.fullCalendar.moment(event.end).format('DD-MM-YYYY hh:mm:ss');
                 $('#modal-event #delete').attr('data-id', event.id);
                 $('#modal-event #_title').val(event.title);
                 $('#modal-event #_date_start').val(date_start);
