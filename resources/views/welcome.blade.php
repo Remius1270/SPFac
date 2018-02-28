@@ -1,112 +1,189 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Fullcalendar and Laravel</title>
-
-    <style>
-
-        body {
-            margin: 40px 10px;
-            padding: 0;
-            font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-            font-size: 14px;
-        }
-
-        #calendar {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-    </style>
-
-    {!! Html::style('css/app.scss') !!}
-    {!! Html::style('vendor/antoine/fullcalendar/fullcalendar.min.css') !!}
+    <title>fullCalendar and Laravel</title>
+    {!! Html::style('vendor/antoine/bootstrap/css/bootstrap.css') !!}
+    {!! Html::style('vendor/antoine/fullcalendar/fullcalendar.css') !!}
+    {!! Html::style('vendor/antoine/bootstrap-datetimepicker/css/bootstrap-material-datetimepicker.css') !!}
+    {!! Html::style('vendor/antoine/bootstrap-colorpicker/css/bootstrap-colorpicker.css') !!}
 </head>
 <body>
-<div class='container'>
+<div class="container">
+
+    {{ Form::open(['route' => 'event.store', 'method' => 'post', 'role' => 'form']) }}
+    <div id="responsive-modal" class="modal fade" tabindex="-1" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>REGISTRO DE NUEVO EVENTO</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        {{ Form::label('title', 'TITULO DE EVENTO') }}
+                        {{ Form::text('title', old('title'), ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('date_start', 'FECHA INICIO') }}
+                        {{ Form::text('date_start', old('date_start'), ['class' => 'form-control', 'readonly' => 'true']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('time_start', 'HORA INICIO') }}
+                        {{ Form::text('time_start', old('time_start'), ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('date_end', 'FECHA HORA FIN') }}
+                        {{ Form::text('date_end', old('date_end'), ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('color', 'COLOR') }}
+                        <div class="input-group colorpicker">
+                            {{ Form::text('color', old('color'), ['class' => 'form-control']) }}
+                            <span class="input-group-addon">
+                                        <i></i>
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dafault" data-dismiss="modal">CANCELAR</button>
+                    {!! Form::submit('GUARDAR', ['class' => 'btn btn-success']) !!}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ Form::close() }}
     <div id='calendar'></div>
+
+    <div id="modal-event" class="modal fade" tabindex="-1" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>DETALLES DE EVENTO</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        {{ Form::label('_title', 'TITULO DE EVENTO') }}
+                        {{ Form::text('_title', old('_title'), ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('_date_start', 'FECHA INICIO') }}
+                        {{ Form::text('_date_start', old('_date_start'), ['class' => 'form-control', 'readonly' => 'true']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('_time_start', 'HORA INICIO') }}
+                        {{ Form::text('_time_start', old('_time_start'), ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('_date_end', 'FECHA HORA FIN') }}
+                        {{ Form::text('_date_end', old('_date_end'), ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('_color', 'COLOR') }}
+                        <div class="input-group colorpicker">
+                            {{ Form::text('_color', old('_color'), ['class' => 'form-control']) }}
+                            <span class="input-group-addon">
+                                        <i></i>
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a id="delete" data-href="{{ url('event') }}" data-id="" class="btn btn-danger">ELIMINAR</a>
+                    <button type="button" class="btn btn-dafault" data-dismiss="modal">CANCELAR</button>
+                    {!! Form::submit('ACTUALIZAR', ['class' => 'btn btn-success']) !!}
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 </body>
-{!! Html::script('js/app.js') !!}
-{!! Html::script('cendor/antoine/fullcalendar/lib/moment.min.js') !!}
-{!! Html::script('cendor/antoine/fullcalendar/lib/jquery.min.js') !!}
-{!! Html::script('cendor/antoine/fullcalendar/fullcalendar.min.js') !!}
+{!! Html::script('vendor/antoine/jquery.js') !!}
+{!! Html::script('vendor/antoine/bootstrap/js/bootstrap.js') !!}
+{!! Html::script('vendor/antoine/fullcalendar/lib/moment.js') !!}
+{!! Html::script('vendor/antoine/fullcalendar/fullcalendar.js') !!}
+{!! Html::script('vendor/antoine/bootstrap-datetimepicker/js/bootstrap-material-datetimepicker.js') !!}
+{!! Html::script('vendor/antoine/bootstrap-colorpicker/js/bootstrap-colorpicker.js') !!}
 <script>
-
+    var BASEURL = "{{ url('/') }}";
     $(document).ready(function() {
 
         $('#calendar').fullCalendar({
             header: {
                 left: 'prev,next today',
                 center: 'title',
-                right: 'month,agendaWeek,agendaDay,listWeek'
+                right: 'month,basicWeek,basicDay'
             },
-            defaultDate: '2018-02-12',
             navLinks: true, // can click day/week names to navigate views
             editable: true,
-            eventLimit: true, // allow "more" link when too many events
-            events: [
-                {
-                    title: 'All Day Event',
-                    start: '2018-02-01',
-                },
-                {
-                    title: 'Long Event',
-                    start: '2018-02-07',
-                    end: '2018-02-10'
-                },
-                {
-                    id: 999,
-                    title: 'Repeating Event',
-                    start: '2018-02-09T16:00:00'
-                },
-                {
-                    id: 999,
-                    title: 'Repeating Event',
-                    start: '2018-02-16T16:00:00'
-                },
-                {
-                    title: 'Conference',
-                    start: '2018-02-11',
-                    end: '2018-02-13'
-                },
-                {
-                    title: 'Meeting',
-                    start: '2018-02-12T10:30:00',
-                    end: '2018-02-12T12:30:00'
-                },
-                {
-                    title: 'Lunch',
-                    start: '2018-02-12T12:00:00'
-                },
-                {
-                    title: 'Meeting',
-                    start: '2018-02-12T14:30:00'
-                },
-                {
-                    title: 'Happy Hour',
-                    start: '2018-02-12T17:30:00'
-                },
-                {
-                    title: 'Dinner',
-                    start: '2018-02-12T20:00:00'
-                },
-                {
-                    title: 'Birthday Party',
-                    start: '2018-02-13T07:00:00'
-                },
-                {
-                    title: 'Click for Google',
-                    url: 'http://google.com/',
-                    start: '2018-02-28'
-                }
-            ]
+            selectable: true,
+            selectHelper: true,
+
+            select: function(start){
+                start = moment(start.format());
+                $('#date_start').val(start.format('YYYY-MM-DD'));
+                $('#responsive-modal').modal('show');
+            },
+
+            event: BASEURL + '/event',
+
+            eventClick: function(event, jsEvent, view){
+                var date_start = $.fullCalendar.moment(event.start).format('YYYY-MM-DD');
+                var time_start = $.fullCalendar.moment(event.start).format('hh:mm:ss');
+                var date_end = $.fullCalendar.moment(event.end).format('YYYY-MM-DD hh:mm:ss');
+                $('#modal-event #delete').attr('data-id', event.id);
+                $('#modal-event #_title').val(event.title);
+                $('#modal-event #_date_start').val(date_start);
+                $('#modal-event #_time_start').val(time_start);
+                $('#modal-event #_date_end').val(date_end);
+                $('#modal-event #_color').val(event.color);
+                $('#modal-event').modal('show');
+            }
         });
 
+    });
+
+    $('.colorpicker').colorpicker();
+
+    $('#time_start').bootstrapMaterialDatePicker({
+        date: false,
+        shortTime: false,
+        format: 'HH:mm:ss'
+    });
+
+    $('#date_end').bootstrapMaterialDatePicker({
+        date: true,
+        shortTime: false,
+        format: 'YYYY-MM-DD HH:mm:ss'
+    });
+
+    $('#delete').on('click', function(){
+        var x = $(this);
+        var delete_url = x.attr('data-href')+'/'+x.attr('data-id');
+
+        $.ajax({
+            url: delete_url,
+            type: 'PATCH',
+            success: function(result){
+                $('#modal-event').modal('hide');
+                alert(result.message);
+            },
+            error: function(result){
+                $('#modal-event').modal('hide');
+                alert(result.message);
+            }
+        });
     });
 
 </script>
