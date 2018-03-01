@@ -110,7 +110,7 @@
 
 </div>
 </body>
-{!! Html::script('vendor/antoine/fullcalendar/lib/jquery.min.js') !!}
+{!! Html::script('vendor/antoine/jquery.min.js') !!}
 {!! Html::script('vendor/antoine/bootstrap/js/bootstrap.min.js') !!}
 {!! Html::script('vendor/antoine/fullcalendar/lib/moment.min.js') !!}
 {!! Html::script('vendor/antoine/fullcalendar/fullcalendar.min.js') !!}
