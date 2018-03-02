@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.2/fullcalendar.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.2/fullcalendar.print.css" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -66,6 +68,9 @@
     </div>
 
     <!-- Scripts -->
+    <script type='text/javascript' src='jquery.js'></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/calendar.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.2/fullcalendar.min.js" ></script>
 </body>
 </html>
