@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('Auth.login');
 });
 
 Auth::routes();
@@ -21,4 +21,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('addRdv',function(){
   return view('addRdv');
-});
+})->name('addRdv');
+
+Route::get('deleteRdv/{id}','RdvsController@delete');
+
+Route::post('/addRdv', 'RdvsController@create');
+Route::post('/editRdv/{rdv}', 'RdvsController@update');

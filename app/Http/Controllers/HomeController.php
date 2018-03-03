@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Rdv;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user_id = Auth::user()->id; 
+        $rdvs = Rdv::All()->where('id_user', $user_id);
+        
+    return view('home', ['rdvs' =>$rdvs]);
     }
 }

@@ -8,7 +8,92 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+body {
+    background-color: #e4e5e6;
+}
+
 .navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+        flex-direction: row;
+    height: 55px;
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+    border-bottom: 1px solid #a4b7c1;
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #c2cfd6;
+    border-radius: 0;
+}
+
+.nav-link {
+    padding: 0;
+}
+.btn {
+    border-radius: 0;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #20a8d8;
+    border-color: #20a8d8;
+    &:hover {
+        background-color: #1b8eb7;
+        border-color: #1985ac;
+    }
+}
+
+.btn-addrdv {
+    margin-top: 10px;
+}
+
+.modal-header {    
+    color: #fff;
+    background-color: #20a8d8;
+    display: flex;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid #c2cfd6;
+}
+
+.modal-warning .modal-header {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.modal-body {
+    position: relative;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1rem;
+}
+
+.modal-footer {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    padding: 1rem;
+    border-top: 1px solid #c2cfd6;
+}
+
+.modal-dialog{
+    max-width: 700px;
+}
+
+.table th, .table td {
+    vertical-align: baseline;
 }

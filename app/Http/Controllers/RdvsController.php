@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Rdv;
 
-class AgendasController extends Controller
+class RdvsController extends Controller
 {
   public function add(){
 
@@ -15,10 +15,11 @@ class AgendasController extends Controller
   public function create(Request $request)
   {
     $rdv = new Rdv();
-    $rdv->name = $data['name'];
-    $rdv->title = $data['title'];
+    $rdv->name = $_POST['name'];
+    $rdv->title = $_POST['title'];
     //convertir en timestamp avec strtotime
-    $rdv->timestamp = strtotime($data['timestamp']);
+    //$rdv->timestamp = strtotime($data['timestamp']);
+    $rdv->id_user = Auth::user()->id;;
 
     $rdv->save();
     return redirect('/home');
@@ -26,18 +27,21 @@ class AgendasController extends Controller
 
   public function update(Rdv $rdv)
   {
-    $rdv->name = $data['name'];
-    $rdv->title = $data['title'];
+    $rdv->name = $_POST['name'];
+    $rdv->title = $_POST['title'];
     //convertir en timestamp avec strtotime
-    $rdv->timestamp = strtotime($data['timestamp']);
+    //$rdv->timestamp = strtotime($data['timestamp']);
 
     $rdv->save();
     return redirect('/home');
   }
 
-  public function delete(Rdv $rdv)
+  public function delete($id)
   {
+    $rdv = Rdv::find($id);
     $rdv->delete();
+    
+    return redirect('/home');
   }
 
   public function read($id)

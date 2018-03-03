@@ -7,16 +7,14 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue');
+$(function() {
+   $(".btn-edit").click(function() {
+       var id = $(this).attr('id');
+       var name = $('#name_'+id).html();
+       var title = $('#title_'+id).html();
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-
-const app = new Vue({
-    el: '#app'
+       $('#editModal #first_name').val(name);
+       $('#editModal #title').val(title);
+       $('#editModal form').attr('action','editRdv/'+id);
+   });
 });
