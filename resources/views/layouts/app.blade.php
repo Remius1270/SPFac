@@ -55,8 +55,8 @@
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     @guest
-                        <li><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-                        <li><a class="nav-link" href="{{ route('register') }}">Register</a></li>
+                        <li><a class="nav-link" href="{{ route('login') }}">Se connecter</a></li>
+                        <li><a class="nav-link" href="{{ route('register') }}">S'enregistrer</a></li>
                         @else
                             <li class="nav-item">
                                 <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown"
@@ -127,9 +127,8 @@
                     title: "{{$rdv->title}}",
                     start: "{{(substr($rdv->timestamp, 0, 10)) }}T{{(substr($rdv->timestamp, 11, 8)) }}"
                 },
-
-                @endforeach
-                @endif
+                    @endforeach
+                    @endif
             ]
         });
 

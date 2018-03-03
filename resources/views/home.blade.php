@@ -28,7 +28,7 @@
                                             <button id="{{$rdv->id}}" class="btn btn-warning btn-edit"
                                                     data-toggle="modal" data-target="#editModal">Editer
                                             </button>
-                                            <a href="/deleteRdv/{{ $rdv->id }}" class="btn btn-danger">Supprimer</a>
+                                            <a onclick="return confirm('Etes-vous sûr ?');" href="/deleteRdv/{{ $rdv->id }}" class="btn btn-danger">Supprimer</a>
                                         </td>
                                     </tr>
                                 @endforeach
