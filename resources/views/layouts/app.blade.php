@@ -15,10 +15,8 @@
     <link href="{{ asset('fullcalendar/fullcalendar.min.css') }}" rel="stylesheet">
     <link href="{{ asset('fullcalendar/fullcalendar.print.min.css') }}" rel='stylesheet' media='print'/>
 
-
-<!--<link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('bootstrap-datetimepicker/css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet">
-    <link href="{{ asset('bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') }}" rel="stylesheet"> -->
+    <link href="{{ asset('bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') }}" rel="stylesheet">
 
     <style>
         #calendar {
@@ -101,10 +99,11 @@
 <script src="{{ asset('jquery.min.js') }}"></script>
 <script src="{{ asset('fullcalendar/fullcalendar.min.js') }}"></script>
 <script src="{{ asset('fullcalendar/locale/fr.js') }}"></script>
+<script src="{{ asset('fullcalendar/gcal.min.js') }}"></script>
 
-<!--<script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>-->
-<!--<script src="{{ asset('bootstrap-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script>
-    <script src="{{ asset('bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>-->
+<script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('bootstrap-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script>
+<script src="{{ asset('bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
 
 <script>
     $(document).ready(function () {
@@ -113,7 +112,8 @@
             header: {
                 left: 'prev,next today',
                 center: 'title',
-                right: 'month,basicWeek,basicDay'
+                businessHours: true,
+                right: 'month,agendaWeek,agendaDay,listMonth'
             },
             defaultDate: '{{ date('Y-m-d') }}',
             navLinks: true, // can click day/week names to navigate views
@@ -125,11 +125,11 @@
                     @foreach($rdvs as $rdv)
                 {
                     title: "{{$rdv->title}}",
-                    start: "{{(substr($rdv->timestamp, 0, 10)) }}"
+                    start: "{{(substr($rdv->timestamp, 0, 10)) }}T{{(substr($rdv->timestamp, 11, 8)) }}"
                 },
 
-                    @endforeach
-                    @endif
+                @endforeach
+                @endif
             ]
         });
 
