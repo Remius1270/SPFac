@@ -121,11 +121,25 @@
             eventLimit: true, // allow "more" link when too many events
 
             events: [
+                    <?php
+                    function genererChaineAleatoire($longueur = 10)
+                    {
+                        $caracteres = '0123456789abcdef';
+                        $longueurMax = strlen($caracteres);
+                        $chaineAleatoire = '';
+                        for ($i = 0; $i < $longueur; $i++)
+                        {
+                            $chaineAleatoire .= $caracteres[rand(0, $longueurMax - 1)];
+                        }
+                        return $chaineAleatoire;
+                    }
+                    ?>
                     @if(count($rdvs)>0)
                     @foreach($rdvs as $rdv)
                 {
                     title: "{{$rdv->title}}",
-                    start: "{{(substr($rdv->timestamp, 0, 10)) }}T{{(substr($rdv->timestamp, 11, 8)) }}"
+                    start: "{{(substr($rdv->timestamp, 0, 10)) }}T{{(substr($rdv->timestamp, 11, 8)) }}",
+                    color: "#{{genererChaineAleatoire(8)}}"
                 },
                     @endforeach
                     @endif
@@ -133,7 +147,6 @@
         });
 
     });
-
 </script>
 </body>
 </html>
