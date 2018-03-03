@@ -100,6 +100,7 @@
 <script src="{{ asset('fullcalendar/lib/moment.min.js') }}"></script>
 <script src="{{ asset('jquery.min.js') }}"></script>
 <script src="{{ asset('fullcalendar/fullcalendar.min.js') }}"></script>
+<script src="{{ asset('fullcalendar/locale/fr.js') }}"></script>
 
 <!--<script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>-->
 <!--<script src="{{ asset('bootstrap-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script>
