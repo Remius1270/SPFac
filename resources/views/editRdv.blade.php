@@ -40,6 +40,22 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="timestamp" class="col-md-4 col-form-label text-md-right">Date</label>
+
+                            <div class="col-md-6">
+                                <div class="form-control-wrapper">
+                                    <input name="timestamp" value="{{ old('timestamp') }}" type="text" id="timestamp_edit" class="form-control{{ $errors->has('timestamp') ? ' is-invalid' : '' }} floating-label" data-dtp="dtp_wVt9F">
+
+                                    @if ($errors->has('timestamp'))
+                                        <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('timestamp') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
                       <!-- mettre qqch pour pick la date et l'heure -->
 
                         <div class="form-group row mb-0">

@@ -18,7 +18,7 @@ class RdvsController extends Controller
     $rdv->name = $_POST['name'];
     $rdv->title = $_POST['title'];
     //convertir en timestamp avec strtotime
-    //$rdv->timestamp = strtotime($data['timestamp']);
+    $rdv->timestamp = $_POST['timestamp'];
     $rdv->id_user = Auth::user()->id;;
 
     $rdv->save();
@@ -30,7 +30,7 @@ class RdvsController extends Controller
     $rdv->name = $_POST['name'];
     $rdv->title = $_POST['title'];
     //convertir en timestamp avec strtotime
-    //$rdv->timestamp = strtotime($data['timestamp']);
+    $rdv->timestamp = $_POST['timestamp'];
 
     $rdv->save();
     return redirect('/home');

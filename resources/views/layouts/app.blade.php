@@ -31,6 +31,10 @@
         body {
             margin-bottom: 70px
         }
+
+        .dtp > .dtp-content {
+            max-height: 527px;
+        }
     </style>
 </head>
 <body>
@@ -107,9 +111,14 @@
 
 <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('bootstrap-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script>
+<script src="{{ asset('bootstrap-datetimepicker/js/bootstrap-datepicker.fr.min.js') }}" charset="UTF-8"></script>
 <script src="{{ asset('bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
 
 @yield('script_calendar')
 
+<script>
+    $('#timestamp_add').bootstrapMaterialDatePicker({ format : 'YYYY-MM-DD HH:mm:ss', lang : 'fr', weekStart : 1, cancelText : 'ANNULER' });
+    $('#timestamp_edit').bootstrapMaterialDatePicker({ format : 'YYYY-MM-DD HH:mm:ss', lang : 'fr', weekStart : 1, cancelText : 'ANNULER' });
+</script>
 </body>
 </html>
