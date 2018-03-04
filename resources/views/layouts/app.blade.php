@@ -86,9 +86,12 @@
     <main class="py-4">
         @yield('content')
     </main>
+
+
+    @yield('calendar')
 </div>
 
-@yield('calendar')
+
 
 <!-- Scripts -->
 <!--<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
@@ -101,10 +104,12 @@
 <script src="{{ asset('fullcalendar/locale/fr.js') }}"></script>
 <script src="{{ asset('fullcalendar/gcal.min.js') }}"></script>
 
+
 <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('bootstrap-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script>
 <script src="{{ asset('bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
 
+@yield('script_calendar')
 
 </body>
 </html>

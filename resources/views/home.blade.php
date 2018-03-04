@@ -28,7 +28,8 @@
                                             <button id="{{$rdv->id}}" class="btn btn-warning btn-edit"
                                                     data-toggle="modal" data-target="#editModal">Editer
                                             </button>
-                                            <a onclick="return confirm('Etes-vous sûr ?');" href="/deleteRdv/{{ $rdv->id }}" class="btn btn-danger">Supprimer</a>
+                                            <a onclick="return confirm('Etes-vous sûr ?');"
+                                               href="/deleteRdv/{{ $rdv->id }}" class="btn btn-danger">Supprimer</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -171,9 +172,7 @@
     </div>
 @endsection
 
-@section('calendar')
-    <div id='calendar'></div>
-
+@section('script_calendar')
     <script>
         $(document).ready(function () {
 
@@ -196,8 +195,7 @@
                             $caracteres = '0123456789abcdef';
                             $longueurMax = strlen($caracteres);
                             $chaineAleatoire = '';
-                            for ($i = 0; $i < $longueur; $i++)
-                            {
+                            for ($i = 0; $i < $longueur; $i++) {
                                 $chaineAleatoire .= $caracteres[rand(0, $longueurMax - 1)];
                             }
                             return $chaineAleatoire;
@@ -218,3 +216,9 @@
         });
     </script>
 @endsection
+
+@section('calendar')
+    <div id='calendar'></div>
+@endsection
+
+
