@@ -4,25 +4,34 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Rdv;
 use App\User;
 
-class RdvsController extends Controller
+class UserController extends Controller
 {
-
-  public function update($id, UserFormRequest $request)
+    public function show($id) {
+        $user = User::findOrFail($id);
+        
+        return view('editAccount', ['user' => $user]);
+    }
+    
+  public function update($id)
 {
 
     $user = User::findOrFail($id);
 
-    $user->first_name = $request->get('first_name');
+    $user->first_name = $_POST['first_name'];
 
-    $user->last_name = $request->get('last_name');
+    $user->last_name = $_POST['last_name'];
 
-    $user->email = $request->get('email');
+    $user->email = $_POST['email'];
 
     $user->save();
+    
+    
+    $rdvs = Rdv::All()->where('id_user', $user->id);
 
-    return view('home');
+    return view('home', ['rdvs' => $rdvs]);
 
 }
 

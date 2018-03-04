@@ -41,7 +41,7 @@
 <div id="app">
     <nav class="app-header navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand" href="{{ url('/home') }}">
                 Rendez-Vous
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -81,6 +81,10 @@
                                     </form>
                                 </div>
                             </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="/editAccount/{{ Auth::user()->id }}"> Mon compte</a>
+                            </li>
+                            
                             @endguest
                 </ul>
             </div>

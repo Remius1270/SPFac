@@ -27,3 +27,6 @@ Route::get('deleteRdv/{id}','RdvsController@delete');
 
 Route::post('/addRdv', 'RdvsController@create');
 Route::post('/editRdv/{rdv}', 'RdvsController@update');
+
+Route::get('editAccount/{id}', 'UserController@show');
+Route::post('editAccount/{id}', 'UserController@update');
