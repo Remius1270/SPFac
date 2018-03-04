@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Rdv;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -26,8 +27,9 @@ class UserController extends Controller
 
     $user->email = $_POST['email'];
 
+    $user->password = Hash::make($_POST['password']);
+
     $user->save();
-    
     
     $rdvs = Rdv::All()->where('id_user', $user->id);
 

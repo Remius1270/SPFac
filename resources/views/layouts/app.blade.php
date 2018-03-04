@@ -62,6 +62,10 @@
                         <li><a class="nav-link" href="{{ route('login') }}">Se connecter</a></li>
                         <li><a class="nav-link" href="{{ route('register') }}">S'enregistrer</a></li>
                         @else
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/editAccount/{{ Auth::user()->id }}"> Mon compte</a>
+                            </li>
                             <li class="nav-item">
                                 <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown"
                                    aria-haspopup="true" aria-expanded="false">
@@ -81,10 +85,6 @@
                                     </form>
                                 </div>
                             </li>
-                             <li class="nav-item">
-                                <a class="nav-link" href="/editAccount/{{ Auth::user()->id }}"> Mon compte</a>
-                            </li>
-                            
                             @endguest
                 </ul>
             </div>
