@@ -12,10 +12,10 @@ class UserController extends Controller
 {
     public function show($id) {
         $user = User::findOrFail($id);
-        
+
         return view('editAccount', ['user' => $user]);
     }
-    
+
   public function update($id)
 {
 
@@ -30,11 +30,20 @@ class UserController extends Controller
     $user->password = Hash::make($_POST['password']);
 
     $user->save();
-    
+
     $rdvs = Rdv::All()->where('id_user', $user->id);
 
     return view('home', ['rdvs' => $rdvs]);
 
 }
+
+  public function find($name)
+  {
+    $users = DB::table('users')->where('first_name',$name)->orWhere('last_name',$name);
+    //permet de chercher selon le nom ou prénom
+    return redirect('users',[
+      'users' => $name
+    ]);
+  }
 
 }
